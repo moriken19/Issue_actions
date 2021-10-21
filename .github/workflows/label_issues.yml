@@ -1,15 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
 name: add-new-issues-to-repository-based-project
-on:
-  issues:
-    types: [opened]
+on: [issues]
 jobs:
   add-new-issues-to-project-column:
     runs-on: ubuntu-latest
     steps:
     - name: add-new-issues-to-repository-based-project-column
       uses: actions/checkout@v2
+      if: github.event_name == 'issues' && github.event.action == 'opened'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_PROJECT_URL: https://github.com/moriken19/Issue_actions/projects/1
