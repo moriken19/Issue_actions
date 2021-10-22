@@ -14,6 +14,10 @@ For the execution of this action, it must be able to fetch all issues and pull r
 In addition, based on the provided configuration, the action could require more permission(s) (e.g.: add label, remove label, comment, close, etc.).  
 This can be achieved with the following [configuration in the action](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#permissions) if the permissions are restricted:
 
+このアクションを実行するには、リポジトリからすべての課題とプルリクエストを取得できなければなりません。
+さらに、提供された設定に基づいて、アクションはより多くのパーミッション（例：ラベルの追加、ラベルの削除、コメント、クローズなど）を必要とする可能性があります。
+これは、権限が制限されている場合、アクションで以下の設定を行うことで実現できます。
+
 ```yaml
 permissions:
   issues: write
@@ -21,6 +25,8 @@ permissions:
 ```
 
 You can find more information about the required permissions under the corresponding options that you wish to use.
+
+必要なパーミッションの詳細は、使用したいオプションの下に表示されます。
 
 ## All options
 
@@ -150,7 +156,14 @@ The idle number of days before closing the stale issues or the stale pull reques
 The issues or the pull requests will be closed if the last update (based on [GitHub issue](https://docs.github.com/en/rest/reference/issues) field `updated_at`) is older than the idle number of days.  
 Since adding the stale label will alter the last update date, we can calculate the number of days from this date.
 
+期限切れの課題や期限切れのプルリクエストを閉じるまでのアイドル日数（期限切れのラベルが原因）です。
+最終更新日（GitHubのissueフィールドupdated_atに基づく）がアイドル日数よりも古い場合、課題やプルリクエストが閉じられます。
+stale ラベルを追加すると最終更新日が変更されるので、この日からの日数を計算します。
+
 If set to a negative number like `-1`, the issues or the pull requests will never be closed automatically.
+
+-1のような負の数を設定すると、課題やプルリクエストが自動的にクローズされることはありません。
+
 
 The label used to stale is defined by these two options:
 
