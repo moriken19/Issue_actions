@@ -21,7 +21,9 @@ jobs:
     - uses: actions/stale@v4
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: '一定期間 ステータスが Openになっている Issueに対して自動でこのメッセージを書き込んでいます。このIssueへの対応を失念していないか確認してください。'
+        stale-issue-message: 'ステータスが Openのまま一定期間更新のない Issueに対して自動でこのメッセージを書き込んでいます。このIssueへの対応を失念していないか確認してください。'
         stale-pr-message: 'Stale pull request message'
-        stale-issue-label: 'no-issue-activity'
-        stale-pr-label: 'no-pr-activity'
+        days-before-stale: 1
+        days-before-close: -1
+        stale-issue-label: '長期間 Open'
+        stale-pr-label: '長期間 Open'
